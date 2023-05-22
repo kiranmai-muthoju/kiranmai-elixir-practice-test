@@ -1,8 +1,8 @@
-defmodule KiranmaiElixirTestApp.Web.Page do
+defmodule KiranmaiElixirTestAppWeb.PageLive do
   use Phoenix.LiveView
 
   def render(assigns) do
-    ~H"""
+    ~L"""
     <div class="container">
       <h1>Welcome to Kiranmai Elixir Test App!</h1>
       <p>Current time: <%= @current_time %></p>
