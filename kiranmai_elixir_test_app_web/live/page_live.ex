@@ -1,27 +1,28 @@
-defmodule KiranmaiElixirTestAppWeb.PageLive do
+defmodule KiranmaiElixirTestWeb.PageLive do
   use Phoenix.LiveView
 
   def render(assigns) do
     ~L"""
-    <div class="container">
-      <h1>Welcome to Kiranmai Elixir Test App!</h1>
-      <p>Current time: <%= @current_time %></p>
-      <ul>
-        <%= for item <- @items do %>
-          <li><%= item %></li>
-        <% end %>
-      </ul>
-      <button phx-click="add_item">Add Item</button>
-    </div>
+    <%= live_render("page.html", @assigns) %>
     """
   end
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, current_time: DateTime.utc_now(), items: ["Item 1", "Item 2"])}
+    {:ok, assign(socket, items: ["Item 1", "Item 2"])}
   end
 
   def handle_event("add_item", _, socket) do
     updated_items = ["New Item" | socket.assigns.items]
     {:noreply, assign(socket, items: updated_items)}
+  end
+
+  defp render_items(items) do
+    ~L"""
+    <ul>
+      <%= for item <- unquote(items) do %>
+        <li><%= item %></li>
+      <% end %>
+    </ul>
+    """
   end
 end
