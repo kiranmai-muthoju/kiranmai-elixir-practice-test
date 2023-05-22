@@ -1,10 +1,12 @@
-<div class="container">
-  <h1>Welcome to Kiranmai Elixir Test App!</h1>
-  <p>Current time: <%= @current_time %></p>
-  <ul>
-    <%= for item <- @items do %>
-      <li><%= item %></li>
-    <% end %>
-  </ul>
-  <button phx-click="add_item">Add Item</button>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kiranmai Elixir Test Page Live</title>
+  </head>
+  <body>
+    <h1>Welcome to Kiranmai Elixir Test Page!</h1>
+    <%= "Today is #{Date.utc_today()}" %>
+    <%= render_items(@items) %>
+    <button phx-click="add_item">Add Item</button>
+  </body>
+</html>
